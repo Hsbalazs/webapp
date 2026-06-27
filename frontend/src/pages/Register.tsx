@@ -1,34 +1,32 @@
 import { useState } from "react";
 import api from "../api";
 
-export default function Login() {
+export default function Register() {
   const [username, setUsername] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string>("");
+  const [success, setSuccess] = useState<string>("");
 
-  const handleLogin = async () => {
+  const handleRegister = async () => {
     try {
-      const response = await api.post(
-        "/auth/login",
-        { username, password },
-        { withCredentials: true } // refresh cookie miatt kötelező
-      );
+      await api.post("/auth/register", {
+        username,
+        email,
+        password,
+      });
 
-      // Backend: { accessToken: "...", refreshTokenCookieSet: true }
-      const accessToken = response.data.accessToken;
-
-      localStorage.setItem("token", accessToken);
-
+      setSuccess("Sikeres regisztráció!");
       setError("");
-      alert("Sikeres bejelentkezés!");
     } catch (err) {
-      setError("Hibás felhasználónév vagy jelszó");
+      setError("A regisztráció sikertelen");
+      setSuccess("");
     }
   };
 
   return (
     <div style={{ maxWidth: "300px", margin: "0 auto" }}>
-      <h2>Bejelentkezés</h2>
+      <h2>Regisztráció</h2>
 
       <input
         type="text"
@@ -38,15 +36,23 @@ export default function Login() {
       />
 
       <input
+        type="email"
+        placeholder="Email cím"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+      />
+
+      <input
         type="password"
         placeholder="Jelszó"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
 
-      <button onClick={handleLogin}>Belépés</button>
+      <button onClick={handleRegister}>Regisztráció</button>
 
       {error && <p style={{ color: "red" }}>{error}</p>}
+      {success && <p style={{ color: "green" }}>{success}</p>}
     </div>
   );
 }
