@@ -3,6 +3,10 @@ package com.example.demo.controller;
 import com.example.demo.model.User;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.security.JwtService;
+
+import jakarta.servlet.http.HttpServletResponse;
+
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
@@ -41,4 +45,18 @@ public class AuthController {
 
         return jwt.generateToken(dbUser.getUsername());
     }
+
+    @PostMapping("/logout")
+public ResponseEntity<Void> logout(HttpServletResponse response) {
+    Cookie cookie = new Cookie("refreshToken", null);
+    cookie.setMaxAge(0); // lejár azonnal
+    cookie.setPath("/auth/refresh"); // ugyanaz a path, mint ahol használod
+    cookie.setHttpOnly(true);
+    cookie.setSecure(true); // ha HTTPS-t használsz
+
+    response.addCookie(cookie);
+
+    return ResponseEntity.ok().build();
+}
+
 }
