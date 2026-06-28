@@ -7,7 +7,7 @@ services:
     working_dir: /app
     volumes:
       - ./backend:/app
-    command: ["./mvnw", "spring-boot:run"]
+    command: ["mvn", "spring-boot:run"]
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://${POSTGRES_HOST}:5432/user
       SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER}
