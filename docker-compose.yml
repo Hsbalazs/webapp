@@ -6,7 +6,7 @@ services:
     container_name: backend
     working_dir: /app
     volumes:
-      - home/raspberry/Projects/webapp/backend:/app
+      - /home/raspberry/Projects/webapp/backend:/app
     command: ["mvn", "spring-boot:run"]
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://${POSTGRES_HOST}:5432/user
