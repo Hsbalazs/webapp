@@ -33,7 +33,7 @@ services:
       - frontend-builder
     volumes:
       - /home/raspberry/Projects/webapp/frontend/dist:/usr/share/nginx/html
-      - /home/raspberry/Projects/webapp/config/nginx.conf.txt:/etc/nginx/conf.d/default.conf
+      - /home/raspberry/Projects/webapp/config/nginx.conf:/etc/nginx/conf.d/default.conf
     ports:
       - "8083:80"
     restart: always
