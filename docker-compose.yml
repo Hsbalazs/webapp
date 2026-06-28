@@ -32,8 +32,8 @@ services:
     depends_on:
       - frontend-builder
     volumes:
-      - ./frontend/dist:/usr/share/nginx/html
-      - ./config:/etc/nginx/conf.d
+      - /home/raspberry/Projects/webapp/frontend/dist:/usr/share/nginx/html
+      - /home/raspberry/Projects/webapp/config:/etc/nginx/conf.d
     ports:
       - "8083:80"
     restart: always
