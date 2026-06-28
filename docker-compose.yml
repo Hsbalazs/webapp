@@ -35,5 +35,5 @@ services:
       - ./frontend/dist:/usr/share/nginx/html
       - ./config:/etc/nginx/conf.d
     ports:
-      - "8082:80"
+      - "8083:80"
     restart: always
