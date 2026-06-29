@@ -32,7 +32,7 @@ services:
       - webapp
 
   frontend:
-    build: /home/raspberry/Projects/webapp/frontend
+    build: ./frontend
     container_name: frontend
     depends_on:
       - backend
