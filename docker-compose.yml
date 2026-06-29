@@ -32,13 +32,10 @@ services:
       - webapp
 
   frontend:
-    image: nginx:alpine
+    build: /home/raspberry/Projects/webapp/frontend
     container_name: frontend
     depends_on:
-      - frontend-builder
-    volumes:
-      - /home/raspberry/Projects/webapp/frontend/dist:/usr/share/nginx/html
-      - /home/raspberry/Projects/webapp/config/nginx.conf:/etc/nginx/conf.d/webapp.conf
+      - backend
     ports:
       - "8083:80"
     restart: always
