@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:8080",
+  baseURL: "http://192.168.1.203:8083",
   withCredentials: true // fontos! cookie miatt
 });
 
@@ -28,7 +28,7 @@ api.interceptors.response.use(
 
       try {
         const refreshResponse = await axios.post(
-          "http://localhost:8080/auth/refresh",
+          "http://192.168.1.203:8083/auth/refresh",
           {},
           { withCredentials: true }
         );

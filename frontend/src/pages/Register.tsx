@@ -10,7 +10,7 @@ export default function Register() {
 
   const handleRegister = async () => {
     try {
-      await api.post("/auth/register", {
+      await api.post("/register", {
         username,
         email,
         password,
