@@ -33,7 +33,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
         String path = request.getServletPath();
 
         // 🔥 LOGIN oldal és LOGIN POST → JWT nélkül is menjen
-        if (path.equals("/auth/register") || path.equals("/auth/login")) {
+        if (path.equals("/auth/login")) {
             filterChain.doFilter(request, response);
             return;
         }
