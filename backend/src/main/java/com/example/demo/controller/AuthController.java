@@ -25,6 +25,11 @@ public class AuthController {
         this.jwt = jwt;
     }
 
+    @GetMapping("/login")
+    public ResponseEntity<String> loginPage() {
+        return ResponseEntity.ok("login-page");
+    }
+
     @PostMapping("/register")
     public String register(@RequestBody User user) {
         if (repo.existsByUsername(user.getUsername())) {
