@@ -14,7 +14,7 @@ export default function Users() {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await api.get("/users");
+        const response = await api.get("/auth/users");
         setUsers(response.data);
       } catch (err) {
         setError("Nem sikerült lekérni a felhasználókat. Lehet, hogy nincs JWT token.");

@@ -7,8 +7,8 @@ import Users from "./pages/Users";
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <BrowserRouter>
     <Routes>
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
+      <Route path="/auth/login" element={<Login />} />
+      <Route path="/auth/register" element={<Register />} />
       <Route path="/users" element={<Users />} />
     </Routes>
   </BrowserRouter>

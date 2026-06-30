@@ -12,7 +12,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/auth")
 public class AuthController {
 
     private final UserRepository repo;

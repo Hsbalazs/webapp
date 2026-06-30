@@ -9,7 +9,7 @@ export default function Login() {
   const handleLogin = async () => {
     try {
       const response = await api.post(
-        "/login",
+        "/auth/login",
         { username, password },
         { withCredentials: true } // refresh cookie miatt kötelező
       );
