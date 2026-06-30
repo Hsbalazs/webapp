@@ -38,6 +38,11 @@ public class JwtAuthFilter extends OncePerRequestFilter {
             return;
         }
 
+        if (path.equals("/auth/register")) {
+            filterChain.doFilter(request, response);
+            return;
+        }
+
         String authHeader = request.getHeader("Authorization");
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
             filterChain.doFilter(request, response);
